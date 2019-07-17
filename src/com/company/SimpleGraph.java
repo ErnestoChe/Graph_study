@@ -79,12 +79,12 @@ class SimpleGraph
         }
         Stack path = new Stack();
 
-        System.out.println(VFrom + " начало");
+        //System.out.println(VFrom + " начало");
         int x = VFrom;
         path.push(x);
 
         while(!path.empty()){
-            System.out.println(x);
+            //System.out.println(x);
             if(m_adjacency[x][VTo] == 1){
                 x = VTo;
             }else{
@@ -97,7 +97,7 @@ class SimpleGraph
             vertex[x].Hit = true;
             path.push(x);
             if(x == VTo){
-                System.out.println("naiden " + path);
+                //System.out.println("naiden " + path);
                 break;
             }
         }
