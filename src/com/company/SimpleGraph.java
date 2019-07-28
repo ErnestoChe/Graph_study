@@ -111,15 +111,77 @@ class SimpleGraph
         return list;
     }
 
-
     public int getUnHit(int start)
     {
         for (int i = 0; i < max_vertex; i++) {
             if(m_adjacency[start][i] == 1 && !vertex[i].Hit){
+                vertex[i].Hit = true;
                 if(i!=start)
                 return i;
             }
         }
         return -1;
+    }
+
+    public ArrayList<Vertex> BreadthFirstSearch(int VFrom, int VTo)
+    {
+
+        int[] level = new int[max_vertex];
+        //счетчик уровней
+        int l = 0;
+        ArrayList list_n = new ArrayList<>();
+        ArrayList<Vertex> list = new ArrayList<>();
+        for (int i = 0; i<max_vertex; i++){
+            vertex[i].Hit = false;
+        }
+        ArrayList pq = new ArrayList();
+
+
+        int tmp = VFrom;
+        level[VFrom] = 0;
+        pq.add(VFrom);
+        vertex[VFrom].Hit = true;
+
+        int lvl_tmp;
+        while(!pq.isEmpty()){
+            tmp = (int)pq.get(0);
+            l++;
+            lvl_tmp = tmp;
+            int t = getUnHit(tmp);
+            while(true){
+                if(t != -1){
+                    pq.add(t);
+                    //list.add(vertex[t]);
+                    level[t] = level[lvl_tmp] + 1;
+                    t = getUnHit(tmp);
+
+                }else break;
+
+                //logs
+                //System.out.println(pq);
+            }
+            pq.remove(0);
+        }
+
+        if(level[VTo] != 0){
+            list_n.add(VTo);
+            list.add(vertex[VTo]);
+            tmp = VTo;
+            while((int)list_n.get(0)!= VFrom){
+                for (int i = 0; i < max_vertex; i++) {
+                    if(m_adjacency[tmp][i] == 1 && level[tmp] == level[i] + 1){
+                        list_n.add(0, i);
+                        list.add(0, vertex[i]);
+                        tmp = i;
+                        break;
+                    }
+                }
+            }
+        }
+        //System.out.println(list_n);
+        // Узлы задаются позициями в списке vertex.
+        // Возвращается список узлов -- путь из VFrom в VTo.
+        // Список пустой, если пути нету.
+        return list;
     }
 }

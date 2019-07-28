@@ -1,37 +1,42 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class Main {
 
     public static void main(String[] args) {
-	    SimpleGraph sg = new SimpleGraph(12);
-        for (int i = 0; i < 12; i++) {
+	    SimpleGraph sg = new SimpleGraph(17);
+        for (int i = 0; i < 17; i++) {
             sg.AddVertex(i);
         }
         sg.AddEdge(0,1);
-        sg.AddEdge(0,4);
-        sg.AddEdge(5,6);
-        //sg.AddEdge(0,2);
-        sg.AddEdge(1,3);
-        sg.AddEdge(1,7);
-        sg.AddEdge(3,6);
-        sg.AddEdge(0,5);
-        //sg.AddEdge(3,7);
+        sg.AddEdge(3,1);
+        sg.AddEdge(2,3);
+        sg.AddEdge(3,4);
+        sg.AddEdge(4,7);
+        sg.AddEdge(10,7);
+        sg.AddEdge(10,9);
         sg.AddEdge(3,5);
-        //sg.AddEdge(4,9);
-        sg.AddEdge(5,8);
-        sg.AddEdge(9,10);
-        sg.AddEdge(6,10);
-        sg.AddEdge(7,11);
-        ArrayList<Vertex> list1 = sg.DepthFirstSearch(2, 6);
-        ArrayList<Vertex> list2 = sg.DepthFirstSearch(8, 11);
-        ArrayList<Vertex> list3 = sg.DepthFirstSearch(11, 8);
+        sg.AddEdge(5,6);
+        sg.AddEdge(6,8);
+        sg.AddEdge(5,10);
+        sg.AddEdge(2,8);
+        sg.AddEdge(12,10);
+        sg.AddEdge(12,11);
+        sg.AddEdge(12,13);
+        sg.AddEdge(14,15);
+        sg.AddEdge(15,16);
 
 
-        System.out.println(list1);
-        System.out.println(list2);
-        System.out.println(list3);
+        ArrayList<Vertex> list1 = sg.DepthFirstSearch(14,2);
+
+        ArrayList<Vertex> list2 = sg.BreadthFirstSearch(14,16);
+        for (Vertex i:list2){
+            System.out.print(i.Value + " ");
+        }
         System.out.println();
+
+
     }
 }
