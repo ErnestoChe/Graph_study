@@ -34,7 +34,7 @@ class SimpleGraph
                 break;
             }
         }
-        // ваш код добавления новой вершины
+        // код добавления новой вершины
         // с значением value
         // в незанятую позицию vertex
     }
@@ -48,7 +48,6 @@ class SimpleGraph
             m_adjacency[v][i] = 0;
             m_adjacency[i][v] = 0;
         }
-        // ваш код удаления вершины со всеми её рёбрами
     }
 
     public boolean IsEdge(int v1, int v2)
