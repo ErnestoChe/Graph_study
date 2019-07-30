@@ -122,6 +122,30 @@ class SimpleGraph
         return -1;
     }
 
+    public ArrayList<Vertex> WeakVertices()
+    {
+        ArrayList<Vertex> list = new ArrayList<>();
+        // возвращает список узлов вне треугольников
+        for (int i = 0; i < max_vertex; i++) {
+            if(isWeak(i)) list.add(vertex[i]);
+        }
+        return list;
+    }
+
+    public boolean isWeak(int v)
+    {
+        for (int i = 0; i < max_vertex; i++) {
+            for (int j = 0; j < max_vertex; j++) {
+                if(IsEdge(v,i) && IsEdge(v,j) && IsEdge(i,j)){
+                    //System.out.println(v + " not weak(in triangle)");
+                    return false;
+                }
+            }
+        }
+        //System.out.println(v + " weak");
+        return true;
+    }
+
     public ArrayList<Vertex> BreadthFirstSearch(int VFrom, int VTo)
     {
 

@@ -27,6 +27,11 @@ public class Main {
         sg.AddEdge(12,13);
         sg.AddEdge(14,15);
         sg.AddEdge(15,16);
+        //for triangles
+        sg.AddEdge(5,8);
+        sg.AddEdge(1,2);
+        sg.AddEdge(14,16);
+        sg.AddEdge(11,13);
 
 
         ArrayList<Vertex> list1 = sg.DepthFirstSearch(14,2);
@@ -37,6 +42,7 @@ public class Main {
         }
         System.out.println();
 
-
+        ArrayList l = sg.WeakVertices();
+        System.out.println();
     }
 }
