@@ -44,9 +44,9 @@ public class Main {
 
         ArrayList l = sg.WeakVertices();
         System.out.println();*/
-        SimpleGraph test = SimpleGraph.RandomGenerated(5);
+        SimpleGraph test = SimpleGraph.RandomGenerated(7);
         test.log();
-        System.out.println(test.Check55());
+        System.out.println(test.CycleCheck55());
 
         int[][] aaa =
                 {
@@ -58,6 +58,18 @@ public class Main {
                 };
         SimpleGraph test2 = new SimpleGraph(aaa);
         test2.log();
-        System.out.println(test2.Check55());
+        System.out.println(test2.CycleCheck55());
+        int[][] aaa2 =
+                {
+                        {0,0,0,0,0,0},
+                        {0,0,1,1,1,1},
+                        {0,1,0,1,1,1},
+                        {0,1,1,0,1,1},
+                        {0,1,1,1,0,1},
+                        {0,1,1,1,1,0}
+                };
+        SimpleGraph test3 = new SimpleGraph(aaa2);
+        test3.log();
+        System.out.println(test3.CycleCheck55());
     }
 }

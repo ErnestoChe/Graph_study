@@ -91,16 +91,28 @@ class SimpleGraph
         return simpleGraph;
     }
 
-    public boolean Check55(){
+    public boolean CycleCheck55()
+    {
+        boolean result = false;
+        for (int i = 0; i < max_vertex; i++) {
+            result = result || Check55(i);
+        }
+        return result;
+    }
+
+    public boolean Check55(int k){
         boolean result = true;
-        int n = 5;
-        for (int i = 0; i <n - 1 ; i++) {
+        //int k = 1;
+        int n = 5 + k;
+        for (int i = k; i <n - 1 ; i++) {
             for (int j = i + 1; j < n; j++) {
-                result &= IsEdge(i,j);
+                result &= IsEdge((i % max_vertex), (j % max_vertex));
             }
         }
-        return !result;
+        return result;
     }
+
+
 
     public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo)
     {
