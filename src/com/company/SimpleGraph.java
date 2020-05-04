@@ -102,7 +102,6 @@ class SimpleGraph
 
     public boolean Check55(int k){
         boolean result = true;
-        //int k = 1;
         int n = 5 + k;
         for (int i = k; i <n - 1 ; i++) {
             for (int j = i + 1; j < n; j++) {
@@ -112,7 +111,24 @@ class SimpleGraph
         return result;
     }
 
+    public boolean CycleCheck33(){
+        boolean result = false;
+        for (int i = 0; i < max_vertex; i++) {
+            result = result || Check33(i);
+        }
+        return result;
+    }
 
+    public boolean Check33(int k){
+        boolean result = true;
+        int n = 6 + k;
+        for (int i = k; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j += 2) {
+                result &= IsEdge((i % max_vertex), (j % max_vertex));
+            }
+        }
+        return result;
+    }
 
     public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo)
     {

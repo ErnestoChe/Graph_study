@@ -71,5 +71,18 @@ public class Main {
         SimpleGraph test3 = new SimpleGraph(aaa2);
         test3.log();
         System.out.println(test3.CycleCheck55());
+        System.out.println(test3.CycleCheck33());
+
+        int[][] k33 = {
+                {0,1,0,1,0,1},
+                {1,0,1,0,1,0},
+                {0,1,0,1,0,1},
+                {1,0,1,0,1,0},
+                {0,1,0,1,0,1},
+                {1,0,1,0,1,0}
+        };
+        SimpleGraph grk33 = new SimpleGraph(k33);
+        grk33.log();
+        System.out.println(grk33.CycleCheck33());
     }
 }
