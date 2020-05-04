@@ -6,7 +6,7 @@ import java.util.PriorityQueue;
 public class Main {
 
     public static void main(String[] args) {
-	    SimpleGraph sg = new SimpleGraph(17);
+	    /*SimpleGraph sg = new SimpleGraph(17);
         for (int i = 0; i < 17; i++) {
             sg.AddVertex(i);
         }
@@ -43,6 +43,21 @@ public class Main {
         System.out.println();
 
         ArrayList l = sg.WeakVertices();
-        System.out.println();
+        System.out.println();*/
+        SimpleGraph test = SimpleGraph.RandomGenerated(5);
+        test.log();
+        System.out.println(test.Check55());
+
+        int[][] aaa =
+                {
+                        {0,1,1,1,1},
+                        {1,0,1,1,1},
+                        {1,1,0,1,1},
+                        {1,1,1,0,1},
+                        {1,1,1,1,0}
+                };
+        SimpleGraph test2 = new SimpleGraph(aaa);
+        test2.log();
+        System.out.println(test2.Check55());
     }
 }

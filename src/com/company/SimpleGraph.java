@@ -26,6 +26,11 @@ class SimpleGraph
         vertex = new Vertex[size];
     }
 
+    public SimpleGraph(int[][] set){
+        max_vertex = set.length;
+        m_adjacency = set;
+        vertex = new Vertex[set.length];
+    }
     public void AddVertex(int value)
     {
         for (int i = 0; i < max_vertex; i++) {
@@ -70,6 +75,33 @@ class SimpleGraph
         // удаление ребра между вершинами v1 и v2
     }
 
+    public static  SimpleGraph RandomGenerated(int size)
+    {
+        SimpleGraph simpleGraph = new SimpleGraph(size);
+        for (int i = 0; i < size; i++) {
+            simpleGraph.AddVertex(i);
+        }
+        for (int i = 0; i < size-1; i++) {
+            for (int j = i+1; j < size; j++) {
+                if((int)(Math.random()*10 % 2) == 1){
+                    simpleGraph.AddEdge(i,j);
+                }
+            }
+        }
+        return simpleGraph;
+    }
+
+    public boolean Check55(){
+        boolean result = true;
+        int n = 5;
+        for (int i = 0; i <n - 1 ; i++) {
+            for (int j = i + 1; j < n; j++) {
+                result &= IsEdge(i,j);
+            }
+        }
+        return !result;
+    }
+
     public ArrayList<Vertex> DepthFirstSearch(int VFrom, int VTo)
     {
         ArrayList<Vertex> list = new ArrayList<>();
@@ -109,6 +141,7 @@ class SimpleGraph
         }
         return list;
     }
+
 
     public int getUnHit(int start)
     {
@@ -206,5 +239,18 @@ class SimpleGraph
         // Возвращается список узлов -- путь из VFrom в VTo.
         // Список пустой, если пути нету.
         return list;
+    }
+
+    public void log() {
+        for (int i = 0; i < max_vertex; i++) {
+            for (int j = 0; j < max_vertex; j++) {
+                if(j == max_vertex-1){
+                    System.out.print(m_adjacency[i][j]);
+                }else{
+                    System.out.print(m_adjacency[i][j] + ", ");
+                }
+            }
+            System.out.println();
+        }
     }
 }
